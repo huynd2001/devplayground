@@ -6,10 +6,10 @@ Competitive Programming development, or testing new language feature by "Hello W
 
 I plan to support:
 - Java (8 & 17)
-- C++23 (with `bits/stdc++.h`)
-- Javascript (with Bun) (TBD)
+- C++22 (with `bits/stdc++.h`)
+- Python (3.10.13)
+- Javascript (TBD)
 - Typescript (TBD)
-- Python (2.7 & 3.10) (TBD)
 - Go (1.21) (TBD)
 - mySQL (TBD)
 - Haskell (TBD)

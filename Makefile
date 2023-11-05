@@ -6,6 +6,8 @@ TEMP_FOLDER_JAVA=/tmp/java/output
 CPP_FILE=main
 TEMP_FOLDER_CPP=/tmp/cpp/output
 
+PYTHON_FILE=main
+
 .PHONY: run-java-8
 run-java-8:
 	mkdir -p ${TEMP_FOLDER_JAVA}
@@ -23,3 +25,7 @@ run-cpp:
 	mkdir -p ${TEMP_FOLDER_CPP}
 	g++ cpp/${CPP_FILE}.cpp -o ${TEMP_FOLDER_CPP}/a.out
 	${TEMP_FOLDER_CPP}/a.out
+
+.PHONY: run-python
+run-python:
+	python3 python/${PYTHON_FILE}.py
