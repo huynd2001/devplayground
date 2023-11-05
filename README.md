@@ -6,13 +6,15 @@ Competitive Programming development, or testing new language feature by "Hello W
 
 I plan to support:
 - Java (8 & 17)
-- C++20 (with `bits/stdc++.h`).
-- Python (2.7 & 3.10)
-- Go (1.21)
-- mySQL
-- Haskell
-- Scala
-- Rust
+- C++20 (with `bits/stdc++.h`) (TBD)
+- Javascript (with Bun) (TBD)
+- Typescript (TBD)
+- Python (2.7 & 3.10) (TBD)
+- Go (1.21) (TBD)
+- mySQL (TBD)
+- Haskell (TBD)
+- Scala (TBD)
+- Rust (TBD)
 
 ## Requirement
 - [docker](https://docs.docker.com/engine/install/)

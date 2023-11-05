@@ -21,16 +21,22 @@ RUN wget -O /THIRD-PARTY-LICENSES-20200824.tar.gz https://corretto.aws/downloads
     echo "${SHA_SUM}  /etc/apk/keys/amazoncorretto.rsa.pub" | sha256sum -c - && \
     echo "https://apk.corretto.aws" >> /etc/apk/repositories
 
-RUN apk add --no-cache amazon-corretto-8=$javaversion8-r0 && \
+RUN apk add --no-cache amazon-corretto-8=${javaversion8}-r0 && \
     rm -rf /usr/lib/jvm/java-8-amazon-corretto/lib/src.zip
 
-RUN apk add --no-cache amazon-corretto-17=$javaversion17-r0 && \
+RUN apk add --no-cache amazon-corretto-17=${javaversion17}-r0 && \
     rm -rf /usr/lib/jvm/java-17-amazon-corretto/lib/src.zip
 
 ENV LANG C.UTF-8
 
 ENV JAVA_HOME=/usr/lib/jvm/default-jvm
 ENV PATH=$PATH:/usr/lib/jvm/default-jvm/bin:/usr/lib/jvm/java-8-amazon-corretto/bin:/usr/lib/jvm/java-17-amazon-corretto/bin
+
+# Installing C++
+
+ARG cppversion=12.2.1_git20220924
+
+RUN apk add --no-cache g++=${cppversion}-r10
 
 WORKDIR /workspace
 COPY . /workspace 
