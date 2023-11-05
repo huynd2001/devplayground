@@ -6,7 +6,7 @@ Competitive Programming development, or testing new language feature by "Hello W
 
 I plan to support:
 - Java (8 & 17)
-- C++20 (with `bits/stdc++.h`) (TBD)
+- C++23 (with `bits/stdc++.h`)
 - Javascript (with Bun) (TBD)
 - Typescript (TBD)
 - Python (2.7 & 3.10) (TBD)
@@ -27,7 +27,7 @@ docker build -t dev-playground:latest .
 
 ## How to run this image for local dev
 
-_**TODO**_ Figure out how to set up local vscode dev env for better highlight.
+_**TODO**_ Figure out how to set up local vscode dev env for setting up dev.
 
 ```shell
 docker run -it dev-playground:latest /bin/sh --login

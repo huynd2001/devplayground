@@ -3,15 +3,23 @@ JAVA_8_HOME=/usr/lib/jvm/java-8-amazon-corretto
 JAVA_17_HOME=/usr/lib/jvm/java-17-amazon-corretto
 TEMP_FOLDER_JAVA=/tmp/java/output
 
+CPP_FILE=main
+TEMP_FOLDER_CPP=/tmp/cpp/output
+
 .PHONY: run-java-8
 run-java-8:
-	JAVAHOME=${JAVA_8_HOME}
+	mkdir -p ${TEMP_FOLDER_JAVA}
 	${JAVA_8_HOME}/bin/javac -d ${TEMP_FOLDER_JAVA} java/${JAVA_FILE}.java
 	${JAVA_8_HOME}/bin/java -cp ${TEMP_FOLDER_JAVA} ${JAVA_FILE}
 
 .PHONY: run-java-17
 run-java-17:
-	JAVAHOME=${JAVA_17_HOME}
+	mkdir -p ${TEMP_FOLDER_JAVA}
 	${JAVA_17_HOME}/bin/javac -d ${TEMP_FOLDER_JAVA} java/${JAVA_FILE}.java
 	${JAVA_17_HOME}/bin/java -cp ${TEMP_FOLDER_JAVA} ${JAVA_FILE}
 	
+.PHONY: run-cpp
+run-cpp:
+	mkdir -p ${TEMP_FOLDER_CPP}
+	g++ cpp/${CPP_FILE}.cpp -o ${TEMP_FOLDER_CPP}/a.out
+	${TEMP_FOLDER_CPP}/a.out
