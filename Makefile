@@ -1,5 +1,5 @@
 JAVA_FILE=Main
-JAVA_8_HOME=/usr/lib/jvm/java-8-amazon-corretto
+JAVA_8_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
 JAVA_17_HOME=/usr/lib/jvm/java-17-amazon-corretto
 TEMP_FOLDER_JAVA=/tmp/java/output
 
