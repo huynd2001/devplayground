@@ -1,11 +1,15 @@
 FROM ubuntu:jammy
 
-# Install make
-
 RUN set -eux \
 	&& apt-get update \
-	&& apt-get install -y build-essential
+	&& apt-get install -y --no-install-recommends \ 
+		build-essential curl ca-certificates gnupg software-properties-common fontconfig java-common
 
+# Setting up scripts running
+
+COPY scripts/* /bin/
+
+RUN find /bin/run-*.sh -type f -exec chmod +x {} \;
 
 # Setting up Java 8 and Java 17
 
@@ -16,8 +20,6 @@ ENV LANG C.UTF-8
 
 RUN set -eux \
     && apt-get update \
-    && apt-get install -y --no-install-recommends \
-        curl ca-certificates gnupg software-properties-common fontconfig java-common \
     && curl -fL https://apt.corretto.aws/corretto.key | apt-key add - \
     && add-apt-repository 'deb https://apt.corretto.aws stable main' \
     && mkdir -p /usr/share/man/man1 || true \
@@ -30,8 +32,6 @@ RUN set -eux \
 
 RUN set -eux \
     && apt-get update \
-    && apt-get install -y --no-install-recommends \
-        curl ca-certificates gnupg software-properties-common fontconfig java-common \
     && curl -fL https://apt.corretto.aws/corretto.key | apt-key add - \
     && add-apt-repository 'deb https://apt.corretto.aws stable main' \
     && mkdir -p /usr/share/man/man1 || true \
@@ -54,5 +54,9 @@ RUN set -eux \
 	&& apt-get update \
 	&& apt-get install -y python3 python3-pip
 
+# Setting up Go
+# TODO
+
 WORKDIR /workspace
+ENV WORKSPACE /workspace
 COPY . /workspace 
