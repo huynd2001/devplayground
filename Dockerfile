@@ -1,9 +1,9 @@
-FROM ubuntu:jammy
+FROM --platform=linux/amd64 ubuntu:jammy
 
 RUN set -eux \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends \ 
-		build-essential curl ca-certificates gnupg software-properties-common fontconfig java-common
+		build-essential curl ca-certificates gnupg software-properties-common fontconfig java-common wget
 
 # Setting up scripts running
 
@@ -24,9 +24,7 @@ RUN set -eux \
     && add-apt-repository 'deb https://apt.corretto.aws stable main' \
     && mkdir -p /usr/share/man/man1 || true \
     && apt-get update \
-    && apt-get install -y java-1.8.0-amazon-corretto-jdk=1:$javaversion8 \
-    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-        curl gnupg software-properties-common
+    && apt-get install -y java-1.8.0-amazon-corretto-jdk=1:$javaversion8
 
 # ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto
 
@@ -36,9 +34,7 @@ RUN set -eux \
     && add-apt-repository 'deb https://apt.corretto.aws stable main' \
     && mkdir -p /usr/share/man/man1 || true \
     && apt-get update \
-    && apt-get install -y java-17-amazon-corretto-jdk=1:$javaversion17 \
-    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-        curl gnupg software-properties-common
+    && apt-get install -y java-17-amazon-corretto-jdk=1:$javaversion17
 
 # ENV JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto
 
@@ -56,6 +52,13 @@ RUN set -eux \
 
 # Setting up Go
 # TODO
+
+ARG goversion=1.19.5
+
+RUN set -eux \
+    && rm -rf /usr/local/go \
+    && wget https://go.dev/dl/go${goversion}.linux-amd64.tar.gz -P /tmp/ \
+    && tar -C /usr/local -xzf /tmp/go${goversion}.linux-amd64.tar.gz
 
 WORKDIR /workspace
 ENV WORKSPACE /workspace

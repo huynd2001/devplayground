@@ -26,7 +26,8 @@
 				"twxs.cmake",
 				"ms-vscode.cpptools-extension-pack",
 				"ms-vscode.cpptools",
-				"ms-python.vscode-pylance"
+				"ms-python.vscode-pylance",
+				"golang.go"
 			]
 		}
 	}
